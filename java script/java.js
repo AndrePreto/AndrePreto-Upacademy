@@ -250,12 +250,7 @@ $(".botoes button").click(function(){
 
 //Quando se clica Gosto incrementa +1 na contagem de gosto dos resultados
 $(".botoes button.botao").click(function(){
-	var livroslike = `
-		<img class =
-
-		`;
 	$("#counter").text(++$counter);
-
 });
 
 //Quando se clica Não Gosto incrementa +1 na contagem de não gosto dos resultados
