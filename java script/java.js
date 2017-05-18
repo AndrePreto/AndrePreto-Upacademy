@@ -256,15 +256,13 @@ $(".botoes button.botao").click(function(){
 	var index = $(".sitio").index($(".sitio.active"));
 	$sitio = $(".sitio").eq(index);
 	$paginas = $("h7", $sitio).text();
-	/*$("#counter").text(function(){
+	$("#counter").text(function(){
 		var total=0;
 		$("h7", $sitio).each(function(){
 			total+= +this.value;
 		});
 		console.log(total);
 	});
-	*/
-	console.log($paginas);
 });
 
 //Quando se clica Não Gosto incrementa +1 na contagem de não gosto dos resultados
