@@ -249,20 +249,14 @@ $(".botoes button").click(function(){
 });
 
 //Quando se clica Gosto incrementa +1 na contagem de gosto dos resultados
-var totalpaginas = 0;
 
 $(".botoes button.botao").click(function(){
-	//$("#counter").text(++$counter);
-	var index = $(".sitio").index($(".sitio.active"));
-	$sitio = $(".sitio").eq(index);
-	$paginas = $("h7", $sitio).text();
-	$("#counter").text(function(){
-		var total=0;
-		$("h7", $sitio).each(function(){
-			total+= +this.value;
-		});
-		console.log(total);
-	});
+	$("#counter").text(++$counter);
+
+	$parent = $(".sitio.active");
+	$capa = $parent.find(".imagem");
+	$capa.appendTo(".LivrosGosto");
+	$(".LivrosGosto").find(".imagem").css("height","200px").css("width","150px");
 });
 
 //Quando se clica Não Gosto incrementa +1 na contagem de não gosto dos resultados
@@ -270,6 +264,11 @@ $(".botoes button.botao").click(function(){
 $(".botoes button.botao1").click(function(){
 
 	$("#counter1").text(++$counter1);
+
+	$parent = $(".sitio.active");
+	$capa = $parent.find(".imagem");
+	$capa.appendTo(".LivrosNaoGosto");
+	$(".LivrosNaoGosto").find(".imagem").css("height","200px").css("width","150px");
 });
 
 //Botão para voltar ao inicio e recomeçar a contagem de gostos e não gostos

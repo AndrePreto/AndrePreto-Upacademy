@@ -10,12 +10,24 @@
 <br>
 <body class="container-fluid">
 
+	<nav class="navbar navbar-default Título">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Fantastic Books</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li><a class="Home" href="#">Home</a></li>
+	      <li><a href="#">Back</a></li>
+	    </ul>
+	  </div>
+	</nav>
+<!--
 	<div class="row">
 		<div class="Título col-xs-12  col-md-12">
 		<h4>Fantastic Books</h4>
 		</div>
 	</div>
-
+-->
 	<br>
 	<br>
 
@@ -47,10 +59,19 @@
 			<div class="Resultados">
 				<br>
 				<h6>Results of your choices</h6>
-				<br>					
-				<span class="glyphicon glyphicon-thumbs-up"></span>  Number of books that you liked:  <label id="counter"></label>
-				<br>
-				<span class="glyphicon glyphicon-thumbs-down"></span>  Number of books that you disliked:  <label id="counter1"></label>
+				<br>	
+				<div class="row">	
+					<div class="Gostos col-xs-6">		
+						<span class="glyphicon glyphicon-thumbs-up"></span>  Number of books that you liked:  <label id="counter"></label>
+						<div class="LivrosGosto">
+						</div>
+					</div>
+					<div class="NaoGostos col-xs-6">		
+						<span class="glyphicon glyphicon-thumbs-down"></span>  Number of books that you disliked:  <label id="counter1"></label>
+						<div class="LivrosNaoGosto">
+						</div>
+					</div>
+				</div>
 				<br>
 				<br>
 				<button type="button" class="Repetir col-xs-4 col-xs-offset-4 btn btn-default btn-sm">
