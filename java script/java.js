@@ -228,6 +228,7 @@ $(".botoes button").click(function(){
 		$(".locais").fadeOut(50,function(){
 			$(".locais").hide();
 			$(".botoes").hide();
+			$(".NextBack").hide();
 
 				$(window).scrollTop(0);
 
@@ -302,9 +303,97 @@ $(".Começar1 button.Inicio").click(function(){
 		$(".locais").fadeIn(50,function(){
 			$(".locais").show();
 			$(".botoes").show();
+			$(".NextBack").show();
 		});
 	});
 });
+
+// Botões que levam o utilizador para a página inicial
+
+$(".FantasticBooks").click(function(){
+	window.location.reload();
+});
+$(".Home").click(function(){
+	window.location.reload();
+});
+
+//Botão Next que passa para o livro seguinte
+
+$(".NextBack button.Next").click(function(){
+	$parent = $(".sitio.active");
+	$next = $parent.next(".sitio");
+	var index = $(".sitio").index($parent);
+	
+	if(index >= $(".sitio").length-1) {
+		$next = $(".sitio").eq(0);
+
+		$(".locais").fadeOut(50,function(){
+			$(".locais").hide();
+			$(".botoes").hide();
+			$(".NextBack").hide();
+
+				$(window).scrollTop(0);
+
+			$("#Repetir").fadeIn(50,function(){
+				$("#Repetir").show();
+			});
+		});
+	}
+
+	$parent.fadeOut(50,function(){
+		$parent.removeClass("active");
+
+			$(window).scrollTop(0);
+		
+		$next.fadeIn(50,function(){
+			$next.addClass("active");
+		});
+	});
+});
+
+//Botão Back que passa para o livro anterior
+
+$(".NextBack button.Back").click(function(){
+	$parent = $(".sitio.active");
+	$previous = $parent.prev(".sitio");
+	var index = $(".sitio").index($parent);
+	
+	if(index == $(".sitio").index(0)) {
+		window.location.reload();
+	}
+
+	$parent.fadeOut(50,function(){
+		$parent.removeClass("active");
+
+			$(window).scrollTop(0);
+		
+		$previous.fadeIn(50,function(){
+			$previous.addClass("active");
+		});
+	});
+});
+
+$(".Backs").click(function(){
+	$parent = $(".sitio.active");
+	$previous = $parent.prev(".sitio");
+	var index = $(".sitio").index($parent);
+	
+	if(index == $(".sitio").index(0)) {
+		window.location.reload();
+	}
+
+	$parent.fadeOut(50,function(){
+		$parent.removeClass("active");
+
+			$(window).scrollTop(0);
+		
+		$previous.fadeIn(50,function(){
+			$previous.addClass("active");
+		});
+	});
+});
+
+
 
 /*
 function MudarLivro(button){
