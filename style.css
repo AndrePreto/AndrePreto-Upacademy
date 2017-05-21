@@ -8,11 +8,21 @@ html {
 }
 
 .Título{
-	text-align: center;
+	text-align: justify;
 	display: block;
 	background-color: #4267b2;
 	min-width: 400px;
 	color: white;
+}
+
+.navbar-default .navbar-brand{
+	color:white;
+	font-size: 120%;
+	font-weight: bold;
+}
+.navbar-default .navbar-nav>li>a{
+	color:white;
+	font-size: 120%;
 }
 
 body{
@@ -209,6 +219,34 @@ p{
 	box-shadow: 5px 5px 10px;
 }
 .botao1{
+	background-color: white;
+	color: black;
+	font-weight: bold;
+	font-size: 90%;
+	border-color:transparent;
+	box-shadow: 5px 5px 10px;
+}
+
+.NextBack{
+	display: none;
+	border-radius: 8px;
+	border-color:transparent;
+	box-shadow: 5px 5px 10px;
+	background-color: #4267b2;
+	color:black;
+	padding:20px 20px 20px 20px;
+	margin-bottom: 20px;
+}
+
+.Next{
+	background-color: white;
+	color: black;
+	font-weight: bold;
+	font-size: 90%;
+	border-color:transparent;
+	box-shadow: 5px 5px 10px;
+}
+.Back{
 	background-color: white;
 	color: black;
 	font-weight: bold;
