@@ -386,8 +386,12 @@ $(".NextBack button.Back").click(function(){
 	});
 });
 
+/*
 $(".NextBack button.Back").click(function(){
-	
+
+	if ((confirmar=true) && (counter>0))
+});
+*/	
 
 $(".Backs").click(function(){
 	$parent = $(".sitio.active");

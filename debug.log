@@ -34,3 +34,6 @@
 [0521/134505.630:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\Noflat\settings.dat: Acesso negado. (0x5)
 [0521/134505.635:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: O encaminhamento (pipe) foi terminado. (0x6D)
 [0521/134505.636:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\Noflat\settings.dat: Acesso negado. (0x5)
+[0522/171259.705:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\Noflat\settings.dat: Acesso negado. (0x5)
+[0522/171259.705:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: O encaminhamento (pipe) foi terminado. (0x6D)
+[0522/171259.705:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\Noflat\settings.dat: Acesso negado. (0x5)
