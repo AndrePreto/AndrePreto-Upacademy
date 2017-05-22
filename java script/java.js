@@ -249,14 +249,20 @@ $(".botoes button").click(function(){
 	});
 });
 
+var Likes = new Array ();
+
+
 //Quando se clica Gosto incrementa +1 na contagem de gosto dos resultados
 
 $(".botoes button.botao").click(function(){
+
+	var confirmar = true;
+	Likes.push();
 	$("#counter").text(++$counter);
 
 	$parent = $(".sitio.active");
 	$capa = $parent.find(".imagem");
-	$capa.appendTo(".LivrosGosto");
+	$capa.clone().appendTo(".LivrosGosto");
 	$(".LivrosGosto").find(".imagem").css("height","200px").css("width","150px");
 });
 
@@ -264,11 +270,13 @@ $(".botoes button.botao").click(function(){
 
 $(".botoes button.botao1").click(function(){
 
+	var confirmar = false;
+	Likes.push();
 	$("#counter1").text(++$counter1);
 
 	$parent = $(".sitio.active");
 	$capa = $parent.find(".imagem");
-	$capa.appendTo(".LivrosNaoGosto");
+	$capa.clone().appendTo(".LivrosNaoGosto");
 	$(".LivrosNaoGosto").find(".imagem").css("height","200px").css("width","150px");
 });
 
@@ -290,6 +298,9 @@ $("#Repetir button.Repetir").click(function(){
 
 	$("#counter").text($counter);
 	$("#counter1").text($counter1);
+
+	$("LivrosGosto").empty();
+	$("LivrosNaoGosto").empty();
 });
 
 //Botão que sai da start Page e vai para os locais de Lisboa
@@ -357,7 +368,9 @@ $(".NextBack button.Back").click(function(){
 	$parent = $(".sitio.active");
 	$previous = $parent.prev(".sitio");
 	var index = $(".sitio").index($parent);
-	
+
+	$(".Lista img:last-child").remove();
+
 	if(index == $(".sitio").index(0)) {
 		window.location.reload();
 	}
@@ -372,6 +385,9 @@ $(".NextBack button.Back").click(function(){
 		});
 	});
 });
+
+$(".NextBack button.Back").click(function(){
+	
 
 $(".Backs").click(function(){
 	$parent = $(".sitio.active");
