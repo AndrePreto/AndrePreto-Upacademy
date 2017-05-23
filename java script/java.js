@@ -249,15 +249,12 @@ $(".botoes button").click(function(){
 	});
 });
 
-var Likes = new Array ();
-
 
 //Quando se clica Gosto incrementa +1 na contagem de gosto dos resultados
 
 $(".botoes button.botao").click(function(){
 
 	var confirmar = true;
-	Likes.push();
 	$("#counter").text(++$counter);
 
 	$parent = $(".sitio.active");
@@ -271,7 +268,6 @@ $(".botoes button.botao").click(function(){
 $(".botoes button.botao1").click(function(){
 
 	var confirmar = false;
-	Likes.push();
 	$("#counter1").text(++$counter1);
 
 	$parent = $(".sitio.active");
@@ -362,7 +358,7 @@ $(".NextBack button.Next").click(function(){
 	});
 });
 
-//Botão Back que passa para o livro anterior
+//Botões Back que passa para o livro anterior
 
 $(".NextBack button.Back").click(function(){
 	$parent = $(".sitio.active");
@@ -386,13 +382,25 @@ $(".NextBack button.Back").click(function(){
 	});
 });
 
+
 $(".NextBack button.Back").click(function(){
-	
+
+	if ((confirmar = true) && ($counter > 0)){
+			
+		$("#counter").text(--$counter);
+		
+	}else if ($counter1 > 0){			
+
+		$("#counter1").text(--$counter1);
+	};
+});
 
 $(".Backs").click(function(){
 	$parent = $(".sitio.active");
 	$previous = $parent.prev(".sitio");
 	var index = $(".sitio").index($parent);
+
+	$(".Lista img:last-child").remove();
 	
 	if(index == $(".sitio").index(0)) {
 		window.location.reload();
@@ -408,6 +416,23 @@ $(".Backs").click(function(){
 		});
 	});
 });
+
+$(".Backs").click(function(){
+
+	if ((confirmar = true) && ($counter > 0)){
+			
+		$("#counter").text(--$counter);
+		
+	}else if ($counter1 > 0){			
+
+		$("#counter1").text(--$counter1);
+	};
+});
+
+
+//Criar base de dados para os favoritos
+
+var database = openDatabase('googledatabase', '1.0', 'Test DB', 2 * 1024 * 1024);
 
 
 

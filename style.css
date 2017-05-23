@@ -7,6 +7,12 @@ html {
 	width: 100%;
 }
 
+body{
+
+	background-color: #e9ebee;
+	font-family: 'Inherit';
+
+}
 .Título{
 	text-align: justify;
 	display: block;
@@ -24,13 +30,13 @@ html {
 	color:white;
 	font-size: 120%;
 }
+.Search{
 
-body{
-
-	background-color: #e9ebee;
-	font-family: 'Inherit';
-
+	display:flex;
+	text-align: right;
 }
+
+
 
 .Começar1{
 
@@ -295,6 +301,7 @@ footer{
 .NaoGostos{
 	text-align: center;
 }
+
 
 /*
 .sitio:not(:first-of-type){
