@@ -38,6 +38,8 @@ CarregarDados();
 
 */
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //Dicionários que contém o texto e os links que vão ser inseridos no ficheiro Html 
 
 
@@ -203,6 +205,16 @@ var ShelfID = "1001";
 
 CarregarDadosHTML();
 
+
+//Cria base de dados com duas colunas Book Name e Opinion
+
+var db = openDatabase('Basedados', '1.0', 'Test DB', 2 * 1024 * 1024);
+
+db.transaction(function (tx) {
+
+    tx.executeSql('CREATE TABLE IF NOT EXISTS books(Book Name, Opinion)');
+ });
+
 //////////////////////////////////////////////////////////////////////
 
 
@@ -221,7 +233,15 @@ $(".botoes button").click(function(){
 	$parent = $(".sitio.active");
 	$next = $parent.next(".sitio");
 	var index = $(".sitio").index($parent);
-	
+	$Bookname = $("h1",$(".sitio.active")).text();
+	$Opinion = $(this).attr('data-Opinion');
+
+	console.log($Bookname);
+	console.log($Opinion);
+	db.transaction(function (tx) {
+		tx.executeSql('INSERT INTO books(Book Name, Opinion) VALUES("' + $Bookname + '","' + $Opinion + '")');
+	});
+
 	if(index >= $(".sitio").length-1) {
 		$next = $(".sitio").eq(0);
 
@@ -247,8 +267,24 @@ $(".botoes button").click(function(){
 			$next.addClass("active");
 		});
 	});
+
+
+
+
 });
 
+// Consultar a base de dados
+
+$(".Favorites").click(function(){
+	db.transaction(function (tx) {
+		tx.executeSql('SELECT * FROM books', [], function (tx, results) {
+	   		$.each(results.rows,function(index,item){
+	   			console.log(item);
+			});
+		}, null);
+	});
+
+});
 
 //Quando se clica Gosto incrementa +1 na contagem de gosto dos resultados
 
@@ -417,6 +453,7 @@ $(".Backs").click(function(){
 	});
 });
 
+
 $(".Backs").click(function(){
 
 	if ((confirmar = true) && ($counter > 0)){
@@ -428,13 +465,6 @@ $(".Backs").click(function(){
 		$("#counter1").text(--$counter1);
 	};
 });
-
-
-//Criar base de dados para os favoritos
-
-var database = openDatabase('googledatabase', '1.0', 'Test DB', 2 * 1024 * 1024);
-
-
 
 /*
 function MudarLivro(button){
