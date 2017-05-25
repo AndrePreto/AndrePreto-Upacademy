@@ -208,11 +208,10 @@ CarregarDadosHTML();
 
 //Cria base de dados com duas colunas Book Name e Opinion
 
-var db = openDatabase('Basedados', '1.0', 'Test DB', 2 * 1024 * 1024);
-
+var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
 db.transaction(function (tx) {
 
-    tx.executeSql('CREATE TABLE IF NOT EXISTS books(Book Name, Opinion)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS books (BookName, Opinion)');
  });
 
 //////////////////////////////////////////////////////////////////////
@@ -226,6 +225,16 @@ document.getElementById("counter1").innerHTML = counter1;
 $counter=0;
 $counter1=0;
 
+//Clear Table Favorites
+
+$(".ClearFavorites").click(function(){
+	db.transaction(function (tx) {
+		//elimina a tabela sempre que necessario
+		tx.executeSql('DROP TABLE books');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS books (BookName, Opinion)');
+	});
+});
+
 //Botão para mudar entre livros
 
 
@@ -236,10 +245,10 @@ $(".botoes button").click(function(){
 	$Bookname = $("h1",$(".sitio.active")).text();
 	$Opinion = $(this).attr('data-Opinion');
 
-	console.log($Bookname);
-	console.log($Opinion);
 	db.transaction(function (tx) {
-		tx.executeSql('INSERT INTO books(Book Name, Opinion) VALUES("' + $Bookname + '","' + $Opinion + '")');
+		tx.executeSql('INSERT INTO books(BookName, Opinion) VALUES("' + $Bookname + '","' + $Opinion + '")',[],null,function(){
+			console.log("error");
+		});
 	});
 
 	if(index >= $(".sitio").length-1) {
@@ -267,10 +276,6 @@ $(".botoes button").click(function(){
 			$next.addClass("active");
 		});
 	});
-
-
-
-
 });
 
 // Consultar a base de dados
@@ -280,10 +285,12 @@ $(".Favorites").click(function(){
 		tx.executeSql('SELECT * FROM books', [], function (tx, results) {
 	   		$.each(results.rows,function(index,item){
 	   			console.log(item);
+    			msg = "<p><b>" + results.rows + "</b></p>";
+    			document.querySelector(".Favorites").innerHTML +=  msg;
+
 			});
 		}, null);
 	});
-
 });
 
 //Quando se clica Gosto incrementa +1 na contagem de gosto dos resultados
