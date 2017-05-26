@@ -281,13 +281,30 @@ $(".botoes button").click(function(){
 // Consultar a base de dados
 
 $(".Favorites").click(function(){
+	var msg = `
+    	<table>
+    		<tr>
+    			<td class="BOOKNAME"></td>
+    			<td class="OPINION"</td>
+    		</tr>
+    	</table>`;
+
 	db.transaction(function (tx) {
 		tx.executeSql('SELECT * FROM books', [], function (tx, results) {
 	   		$.each(results.rows,function(index,item){
 	   			console.log(item);
-    			msg = "<p><b>" + results.rows + "</b></p>";
-    			document.querySelector(".Favorites").innerHTML +=  msg;
+	   			var len = results.rows.item(index);
+	   			$Bookname = len.BookName;
+	   			$opinion = len.Opinion;
+    			
+    			$(".Favorites").append(msg);
 
+    			$(".BOOKNAME,").text($Bookname);
+    			$(".OPINION,").text($opinion);
+    			/*
+    			"<br><tr><td> " + len.BookName + " </td></tr> , <tr><td> " + len.Opinion + " </td></tr> ";
+    			document.querySelector(".Favorites").innerHTML +=  msg;
+    			*/
 			});
 		}, null);
 	});
